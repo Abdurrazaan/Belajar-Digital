@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dunia Programmer & Cyber Security</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace;}
+    body {
+      background:#0d0017;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* Background canvas */
+    canvas {
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      z-index:-1;
+      background:#0d0017;
+    }
+
+    /* Hero glass blur */
+    .hero {
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:20px;
+      padding:0 20px;
+      text-align:center;
+    }
+    .glass {
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(15px);
+      border-radius:20px;
+      padding:40px;
+      max-width:1100px;
+      width:100%;
+      margin:auto;
+      box-shadow:0 0 25px rgba(187,134,252,0.5);
+    }
+
+    /* Typing effect */
+    .typing {
+      font-size:1.8rem;
+      color:#bb86fc;
+      border-right:2px solid #bb86fc;
+      white-space:nowrap;
+      overflow:hidden;
+      display:inline-block;
+      width:0;
+      animation:typing 6s steps(33,end) forwards, blink 0.7s step-end infinite;
+    }
+    @keyframes typing {
+      from { width:0 }
+      to   { width:33ch } /* panjang teks = 33 karakter */
+    }
+    @keyframes blink { 50%{border-color:transparent} }
+
+    /* Container tombol */
+    .buttons {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:15px;
+      margin-top:20px;
+    }
+
+    /* Button */
+    .btn {
+      background:#bb86fc;
+      color:#0d0017;
+      border:none;
+      padding:16px 28px;
+      margin:5px;
+      border-radius:12px;
+      font-size:1.1rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      min-width:160px;
+      text-align:center;
+    }
+    .btn:hover {
+      background:#e0aaff;
+      transform:scale(1.08);
+    }
+
+    /* Telegram button style */
+    .btn-telegram {
+      background:#0088cc;
+      color:white;
+    }
+    .btn-telegram:hover {
+      background:#33aaff;
+    }
+
+    /* Content sections */
+    section {
+      max-width:1100px;
+      margin:30px auto;
+      padding:30px;
+      text-align:left;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      border-radius:15px;
+      box-shadow:0 0 20px rgba(187,134,252,0.3);
+      display:none;
+    }
+    section h2 {
+      color:#e0aaff;
+      margin-bottom:15px;
+      font-size:1.6rem;
+    }
+    section p, section li {
+      font-size:1rem;
+      line-height:1.7;
+      margin-bottom:10px;
+    }
+    ul {margin-left:20px;}
+
+    /* Biar rapi di layar kecil */
+    @media (max-width:600px){
+      .hero, section {padding:0 15px;}
+      .btn {
+        font-size:1rem;
+        padding:14px 24px;
+        min-width:140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background animasi garis -->
+  <canvas id="bg"></canvas>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="glass">
+      <h1 class="">Wellcome to website Razaan Digital</h1>
+    </div>
+
+    <!-- Tombol navigasi -->
+    <div class="buttons">
+      <button class="btn" onclick="showSection('programmer')">Dunia Programmer</button>
+      <button class="btn" onclick="showSection('security')">Cyber Security</button>
+      <button class="btn" onclick="showSection('attack')">Cyber Attack</button>
+      <button class="btn" onclick="showSection('bahasa')">Bahasa Coding</button>
+      <a href="https://t.me/KacamataGaming" target="_blank" class="btn btn-telegram">📩 Telegram: t.me/KacamataGaming</a>
+      <button class="btn" id="musicBtn">🎵 Play Musik</button>
+    </div>
+  </div>
+
+  <!-- Audio musik -->
+  <audio id="bg-music" preload="auto">
+    <source src="https://files.catbox.moe/d1wv1o.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Section lainnya -->
+  <section id="programmer"><h2>Dunia Programmer</h2><p>Programmer adalah sebuah jenis profesi atau pekerjaan yang bertujuan untuk membuat sebuah sistem menggunakan bahasa pemrograman. Seseorang yang memiliki skill menulis kode program (syntax) dan merancang sistem, bisa juga disebut programmer. Kode atau bahasa program yang dimaksud seperti Java, Python, Javascript, PHP, dll.</p></section>
+  <section id="security"><h2>Cyber Security</h2>Cyber security adalah salah satu aspek penting dalam dunia teknologi informasi yang bertujuan untuk melindungi sistem komputer, perangkat lunak, dan data dari serangan yang tidak diinginkan. Dalam era digital saat ini, cyber security menjadi makin penting karena banyaknya aktivitas online yang dilakukan oleh individu maupun organisasi.</section>
+  <section id="attack"><h2>Cyber Attack</h2>Cyber attack merupakan tindak kejahatan yang dilakukan oleh para hacker dengan tujuan untuk merusak jaringan atau sistem komputer. Selain menimbulkan berbagai kerusakan, cyber attack biasanya juga dilakukan untuk mencuri data penting yang tersimpan di dalam database cloud.</section>
+  <section id="bahasa"><h2>Bahasa Coding</h2>Coding adalah salah satu tindakan dari langkah-langkah pemrograman dengan menuliskan kode atau skrip dalam bahasa pemrograman. Supaya skrip tersebut dapat dipahami oleh komputer, maka saat proses coding kamu harus mengikuti aturan sintaks yang berlaku. Aturan sintaks sangat tergantung dari bahasa pemrograman apa yang kamu gunakan saat menuliskan skrip.</section>
+
+  <footer style="padding:30px;color:#aaa;text-align:center;">
+    © 2025 Razaan Digital | Dunia Programmer, Cyber Security, dan Cyber Attack
+  </footer>
+
+  <script>
+    // Background garis animasi
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    let w,h,particles;
+    function init(){
+      w=canvas.width=window.innerWidth;
+      h=canvas.height=window.innerHeight;
+      particles=[];
+      for(let i=0;i<100;i++){
+        particles.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5),vy:(Math.random()-0.5)});
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      ctx.fillStyle="#bb86fc";
+      particles.forEach(p=>{
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0||p.x>w) p.vx*=-1;
+        if(p.y<0||p.y>h) p.vy*=-1;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,2,0,Math.PI*2);
+        ctx.fill();
+      });
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          let dx=particles[i].x-particles[j].x;
+          let dy=particles[i].y-particles[j].y;
+          let dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<120){
+            ctx.strokeStyle="rgba(187,134,252,0.3)";
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x,particles[i].y);
+            ctx.lineTo(particles[j].x,particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    init();draw();
+    window.onresize=init;
+
+    // Button show/hide
+    function showSection(id){
+      document.querySelectorAll("section").forEach(sec=>sec.style.display="none");
+      document.getElementById(id).style.display="block";
+      window.scrollTo({top:document.getElementById(id).offsetTop-20, behavior:"smooth"});
+    }
+
+    // Musik
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("musicBtn");
+    let stopTimer = null;
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏹ Stop Musik";
+
+        music.addEventListener("loadedmetadata", () => {
+          clearTimeout(stopTimer);
+          stopTimer = setTimeout(() => {
+            music.pause();
+            music.currentTime = 0;
+            musicBtn.textContent = "🎵 Play Musik";
+          }, music.duration * 1000);
+        }, { once: true });
+
+      } else {
+        music.pause();
+        music.currentTime = 0;
+        musicBtn.textContent = "🎵 Play Musik";
+        clearTimeout(stopTimer);
+      }
+    });
+  </script>
+</body>
+  </html>
